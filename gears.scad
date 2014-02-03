@@ -56,7 +56,7 @@ module large() {
                           bore_diameter=8,
                           pressure_angle=32,
                           twist = -360 / large_teeth,
-                          hub_diameter=18,
+                          hub_diameter=20,
                           hub_thickness=12,
                           gear_thickness=5,
                           addendum=.9,
@@ -66,6 +66,16 @@ module large() {
             translate([0, 0, 6]) linear_extrude(6) { hexa(apothem=6.5); }
             // Tapers in at the bottom for a snugger fit
             translate([0, 0, 5]) linear_extrude(1, scale = 6.5 / 6) { hexa(apothem=6); }
+
+            // Holes in gear wheel
+            for (i = [0:4]) {
+                rotate(i * 360 / 5) translate([0, 15, 0]) {
+                    hull() {
+                        hexa_prz(5.5, 100);
+                        translate([0, 3, 0])hexa_prz(5.5, 100);
+                    }
+                }
+            }
         }
     }
 }
