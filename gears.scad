@@ -35,7 +35,7 @@ module large() {
                   twist = -360 / large_teeth,
                   hub_diameter=18,
                   hub_thickness=12,
-                  clearance=.5,
+                  clearance=1,
                   gear_thickness=5,
                   rim_thickness=12);
 }
