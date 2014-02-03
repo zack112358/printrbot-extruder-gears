@@ -295,7 +295,8 @@ module gear (
 	circles=0,
 	backlash=0,
 	twist=0,
-	involute_facets=0)
+	involute_facets=0,
+    addendum=false)
 {
 	if (circular_pitch==false && diametral_pitch==false) 
 		echo("MCAD ERROR: gear module needs either a diametral_pitch or circular_pitch");
@@ -315,7 +316,7 @@ module gear (
 	pitch_diametrial = number_of_teeth / pitch_diameter;
 
 	// Addendum: Radial distance from pitch circle to outside circle.
-	addendum = 1/pitch_diametrial;
+	addendum = addendum==false? 1/pitch_diametrial : addendum;
 
 	//Outer Circle
 	outer_radius = pitch_radius+addendum;
